@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <!-- Section search by model -->
+  <section class="search-form">
+
+  </section>
+  <!-- Vehicle list -->
+  <section class="vehicle-list-section">
+    <ul class="vehicle-list-container">
+      <li class="vehicle" *ngFor="let vehicle of vehicles">
+        <div class="vehicle-container">
+          <img class="vehicle-img" [src]="vehicle.picture" alt="">
+          <ul class="vehicle-detail">
+            <li><p>Model: <span>{{ vehicle.model }}</span></p></li>
+            <li><p>Year: <span>{{ vehicle.year }}</span></p></li>
+            <li><p>Brand: <span>{{ vehicle.brand }}</span></p></li>
+            <li><p>Price: <span>{{ vehicle.price }}</span></p></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>
+<app-footer></app-footer> 
