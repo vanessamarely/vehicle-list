@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleListService } from '../../services/vehicle-list.service';
+import { FormBuilder, FormGroup, FormControl  } from '@angular/forms';
+
 
 @Component({
   selector: 'app-home',
@@ -7,17 +9,37 @@ import { VehicleListService } from '../../services/vehicle-list.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  vehicles = [];
-  
-  constructor(private vehicleList: VehicleListService) { }
+  vehiclesList = [];
+  brandVehicleList = [];
+  form: FormGroup;
+  selectedBrand: string = '';
 
-  ngOnInit() {
-    this.getStoreItems();
+  constructor(private vehicleList: VehicleListService, fb: FormBuilder) { 
+    this.form = fb.group({
+      brandName: [['']]
+    });
   }
 
-  getStoreItems(): void {
-    this.vehicles = this.vehicleList.getVehicleList();
-    console.log( this.vehicles)
+  ngOnInit() {
+    this.getVehicles();
+  }
+
+  getVehicles(): void {
+    const vehicles = this.vehicleList.getVehicleList();
+    this.brandVehicleList = vehicles.map( item => item.brand);
+   
+    if(this.selectedBrand === '') {
+      this.vehiclesList = vehicles;
+    }else {
+      let filteredVehicles = [];
+      vehicles.filter(item => item.brand === this.selectedBrand).map(item => filteredVehicles.push(item))
+      this.vehiclesList = filteredVehicles;
+    }
+  }
+
+  onChange(): void {
+    this.selectedBrand = this.form.get('brandName').value;
+    this.getVehicles();
   }
 
 }

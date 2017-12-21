@@ -11,8 +11,10 @@ export class VehicleListService {
   constructor(private http: Http) { }
 
   getVehicleList(): Vehicle[] {
-    console.log(VEHICLES)
+    const vehiclesList = VEHICLES;
     return VEHICLES;
   } 
+
+ 
 
 }

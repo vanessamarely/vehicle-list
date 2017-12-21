@@ -2,12 +2,20 @@
 <div class="container-fluid">
   <!-- Section search by model -->
   <section class="search-form">
-
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label for="sel1">Select a Brand:</label>
+        <select formControlName="brandName" class="form-control" (change)="onChange()">
+          <option value="">Select a Brand:</option>
+          <option *ngFor="let brand of brandVehicleList" [value]="brand">{{ brand }}</option>
+        </select>
+      </div>
+    </form>
   </section>
   <!-- Vehicle list -->
   <section class="vehicle-list-section">
     <ul class="vehicle-list-container">
-      <li class="vehicle" *ngFor="let vehicle of vehicles">
+      <li class="vehicle" *ngFor="let vehicle of vehiclesList">
         <div class="vehicle-container">
           <img class="vehicle-img" [src]="vehicle.picture" alt="">
           <ul class="vehicle-detail">
