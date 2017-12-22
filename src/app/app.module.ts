@@ -11,9 +11,11 @@ import { HomeComponent } from './components/home/home.component';
 
 import { VehicleListService } from './services/vehicle-list.service';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
+import { VehiclesCompareComponent } from './components/vehicles-compare/vehicles-compare.component';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'vehicle/:id', component: VehicleComponent}
+  {path: 'vehicle/:id', component: VehicleComponent},
+  {path: 'compare', component: VehiclesCompareComponent}
 ];
 
 @NgModule({
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    VehicleComponent
+    VehicleComponent,
+    VehiclesCompareComponent
   ],
   imports: [
     BrowserModule,

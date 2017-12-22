@@ -22,14 +22,16 @@
   <!-- Compare info -->
   <section class="compare-detail" *ngIf="comparelist.length > 1">
     <p>You have been select {{ compareModelCount }} Models. To compare them click on following button: 
-    <button type="button" class="btn btn-primary btn-compare-link">Compare</button></p>
+    <button type="button" class="btn btn-primary btn-compare-link" [routerLink]="['/compare']">Compare</button></p>
   </section>
   <!-- Vehicle list -->
   <section class="vehicle-list-section">
     <ul class="vehicle-list-container" *ngIf="vehiclesList">
       <li class="vehicle" *ngFor="let vehicle of vehiclesList">
         <div class="vehicle-container">
-          <img class="vehicle-img" [src]="vehicle.picture" [routerLink]="['/vehicle', vehicle.id]">
+          <div class="container-img">
+            <img class="vehicle-img" [src]="vehicle.picture" [routerLink]="['/vehicle', vehicle.id]">
+          </div>
           <ul class="vehicle-detail">
             <li>
               <p>
