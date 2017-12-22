@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <!-- Section search by brand -->
+  <section class="search-form">
+    <form [formGroup]="form">
+      <div class="form-group" *ngIf="search">
+        <label for="sel1">Search by Brand</label> 
+        <input type="text" formControlName="brandName" placeholder="Search by Brand:" class="form-control" (keyup.enter)="onChange()">
+       <button type="button" class="btn btn-default btn-search" (click)="onChange()"><i class="fa fa-search"></i></button>
+       <button type="button" class="btn btn-primary btn-option" (click)="search = false; filterByBrand()">Filter</button>
+      </div>
+      <div class="form-group" *ngIf="!search">
+        <label for="sel1">Filter by Brand:</label>
+        <select formControlName="brandName" class="form-control" (change)="onChange()">
+          <option value="">Filter by Brand:</option>
+          <option *ngFor="let brand of brandVehicleList" [value]="brand">{{ brand }}</option>
+        </select>
+        <button type="button" class="btn btn-primary btn-option" (click)="search = true">Search</button>
+        </div>
+    </form>
+  </section>
+  <!-- Compare info -->
+  <section class="compare-detail" *ngIf="comparelist.length > 1">
+    <p>You have been select {{ compareModelCount }} Models. To compare them click on following button: 
+    <button type="button" class="btn btn-primary btn-compare-link" [routerLink]="['/compare']">Compare</button></p>
+  </section>
+  <!-- Vehicle list -->
+  <section class="vehicle-list-section">
+    <ul class="vehicle-list-container" *ngIf="vehiclesList">
+      <li class="vehicle" *ngFor="let vehicle of vehiclesList">
+        <div class="vehicle-container">
+          <div class="container-img">
+            <img class="vehicle-img" [src]="vehicle.picture" [routerLink]="['/vehicle', vehicle.id]">
+          </div>
+          <ul class="vehicle-detail">
+            <li>
+              <p>
+                <span class="link" [routerLink]="['/vehicle', vehicle.id]">Model: <span>{{ vehicle.model }}</span></span>  
+                <button *ngIf="comparelist.length < 3 && vehicle.active" type="button" class="btn btn-primary btn-compare" (click)="compareModels(vehicle); vehicle.active=false;"><i class="fa fa-exchange"></i></button>
+              </p>
+            </li>
+            <li><p><span>Year:</span> <span>{{ vehicle.year }}</span></p></li>
+            <li><p><span>Brand:</span> <span>{{ vehicle.brand }}</span></p></li>
+            <li><p><span>Price:</span> <span>{{ vehicle.price | number:'.2-2' }} COP</span></p></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <div class="no-result" *ngIf="vehiclesList.length === 0">
+      <p>No results to display</p>
+    </div>
+  </section>
+</div>
+<app-footer></app-footer> 
