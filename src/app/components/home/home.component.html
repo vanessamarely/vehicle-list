@@ -35,7 +35,7 @@
           <ul class="vehicle-detail">
             <li>
               <p>
-                <span class="link" [routerLink]="['/vehicle', vehicle.id]">Model: <span>{{ vehicle.model }}</span></span>  
+                <span class="link" [routerLink]="['/vehicle', vehicle.id]">Model: <span>{{ vehicle.model }}</span> <i *ngIf="!vehicle.active" class="fa fa-check item-selected"></i> </span> 
                 <button *ngIf="comparelist.length < 3 && vehicle.active" type="button" class="btn btn-primary btn-compare" (click)="compareModels(vehicle); vehicle.active=false;"><i class="fa fa-exchange"></i></button>
               </p>
             </li>
