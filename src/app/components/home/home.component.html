@@ -19,17 +19,27 @@
         </div>
     </form>
   </section>
+  <!-- Compare info -->
+  <section class="compare-detail" *ngIf="comparelist.length > 1">
+    <p>You have been select {{ compareModelCount }} Models. To compare them click on following button: 
+    <button type="button" class="btn btn-primary btn-compare-link">Compare</button></p>
+  </section>
   <!-- Vehicle list -->
   <section class="vehicle-list-section">
     <ul class="vehicle-list-container" *ngIf="vehiclesList">
-      <li class="vehicle" *ngFor="let vehicle of vehiclesList" [routerLink]="['/vehicle', vehicle.id]">
+      <li class="vehicle" *ngFor="let vehicle of vehiclesList">
         <div class="vehicle-container">
-          <img class="vehicle-img" [src]="vehicle.picture" alt="">
+          <img class="vehicle-img" [src]="vehicle.picture" [routerLink]="['/vehicle', vehicle.id]">
           <ul class="vehicle-detail">
-            <li><p>Model: <span>{{ vehicle.model }}</span></p></li>
-            <li><p>Year: <span>{{ vehicle.year }}</span></p></li>
-            <li><p>Brand: <span>{{ vehicle.brand }}</span></p></li>
-            <li><p>Price: <span>{{ vehicle.price | number:'.2-2' }} COP</span></p></li>
+            <li>
+              <p>
+                <span class="link" [routerLink]="['/vehicle', vehicle.id]">Model: <span>{{ vehicle.model }}</span></span>  
+                <button *ngIf="comparelist.length < 3 && vehicle.active" type="button" class="btn btn-primary btn-compare" (click)="compareModels(vehicle); vehicle.active=false;"><i class="fa fa-exchange"></i></button>
+              </p>
+            </li>
+            <li><p><span>Year:</span> <span>{{ vehicle.year }}</span></p></li>
+            <li><p><span>Brand:</span> <span>{{ vehicle.brand }}</span></p></li>
+            <li><p><span>Price:</span> <span>{{ vehicle.price | number:'.2-2' }} COP</span></p></li>
           </ul>
         </div>
       </li>

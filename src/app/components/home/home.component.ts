@@ -10,12 +10,16 @@ import * as _ from 'lodash';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  vehiclesList = [];
+  
   brandVehicleList = [];
+  comparelist = [];
+  compareModelCount = 0;
+  compareModelNames = [];
   form: FormGroup;
   selectedBrand: string = '';
   search: boolean = true;
-
+  vehiclesList = [];
+  
   constructor(private vehicleList: VehicleListService, fb: FormBuilder) { 
     this.form = fb.group({
       brandName: [['']]
@@ -27,14 +31,17 @@ export class HomeComponent implements OnInit {
   }
 
   getVehicles(): void {
-    const vehicles = this.vehicleList.getVehicleList();
+    const vehicles = this.vehicleList.getVehicleList().map( (veh) => {
+      veh['active'] = true;
+      return veh;
+    });
+
     if(this.selectedBrand === '') {
       this.vehiclesList = vehicles;
     }else {
       let filteredVehicles = [];
       vehicles.filter(item => _.lowerCase(item.brand) === _.lowerCase(this.selectedBrand)).map(item => filteredVehicles.push(item))
       this.vehiclesList = filteredVehicles.length? filteredVehicles : [];
-      console.log( this.vehiclesList)
     }
   }
 
@@ -51,6 +58,12 @@ export class HomeComponent implements OnInit {
         this.brandVehicleList.push(brand);
       }
     });
+  }
+
+  compareModels(vehicle): void{
+    this.comparelist.push(vehicle);
+    this.compareModelNames = this.comparelist.map( item => item.model);
+    this.compareModelCount++;
   }
 
 }
