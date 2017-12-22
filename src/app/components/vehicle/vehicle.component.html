@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="vehicle-container">
+    <h2 class="model">{{ vehicleDetail.model }}</h2>
+    <div class="vehicle-img">
+      <img [src]="vehicleDetail.picture" alt="">
+    </div>
+    <ul class="vehicle-detail">
+      <li><p><span class="label">Title:</span> <span>{{ vehicleDetail.title }}</span></p></li>
+      <li><p><span class="label">Year:</span> <span>{{ vehicleDetail.year }}</span></p></li>
+      <li><p><span class="label">Brand:</span> <span>{{ vehicleDetail.brand }}</span></p></li>
+      <li><p><span class="label">Price:</span> <span>{{ vehicleDetail.price | number:'.2-2' }} COP</span></p></li>
+      <li><p><span class="label">features:</span> <span>{{ vehicleDetail.features }} COP</span></p></li>
+    </ul>
+  </div>
+</div>
+<app-footer></app-footer> 

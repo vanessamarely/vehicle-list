@@ -10,8 +10,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { VehicleListService } from './services/vehicle-list.service';
+import { VehicleComponent } from './components/vehicle/vehicle.component';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'vehicle/:id', component: VehicleComponent}
 ];
 
 @NgModule({
@@ -19,7 +21,8 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    VehicleComponent
   ],
   imports: [
     BrowserModule,

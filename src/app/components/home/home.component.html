@@ -1,32 +1,42 @@
 <app-header></app-header>
 <div class="container-fluid">
-  <!-- Section search by model -->
+  <!-- Section search by brand -->
   <section class="search-form">
     <form [formGroup]="form">
-      <div class="form-group">
-        <label for="sel1">Select a Brand:</label>
+      <div class="form-group" *ngIf="search">
+        <label for="sel1">Search by Brand</label> 
+        <input type="text" formControlName="brandName" placeholder="Search by Brand:" class="form-control" (keyup.enter)="onChange()">
+       <button type="button" class="btn btn-default btn-search" (click)="onChange()"><i class="fa fa-search"></i></button>
+       <button type="button" class="btn btn-primary btn-option" (click)="search = false; filterByBrand()">Filter</button>
+      </div>
+      <div class="form-group" *ngIf="!search">
+        <label for="sel1">Filter by Brand:</label>
         <select formControlName="brandName" class="form-control" (change)="onChange()">
-          <option value="">Select a Brand:</option>
+          <option value="">Filter by Brand:</option>
           <option *ngFor="let brand of brandVehicleList" [value]="brand">{{ brand }}</option>
         </select>
-      </div>
+        <button type="button" class="btn btn-primary btn-option" (click)="search = true">Search</button>
+        </div>
     </form>
   </section>
   <!-- Vehicle list -->
   <section class="vehicle-list-section">
-    <ul class="vehicle-list-container">
-      <li class="vehicle" *ngFor="let vehicle of vehiclesList">
+    <ul class="vehicle-list-container" *ngIf="vehiclesList">
+      <li class="vehicle" *ngFor="let vehicle of vehiclesList" [routerLink]="['/vehicle', vehicle.id]">
         <div class="vehicle-container">
           <img class="vehicle-img" [src]="vehicle.picture" alt="">
           <ul class="vehicle-detail">
             <li><p>Model: <span>{{ vehicle.model }}</span></p></li>
             <li><p>Year: <span>{{ vehicle.year }}</span></p></li>
             <li><p>Brand: <span>{{ vehicle.brand }}</span></p></li>
-            <li><p>Price: <span>{{ vehicle.price }}</span></p></li>
+            <li><p>Price: <span>{{ vehicle.price | number:'.2-2' }} COP</span></p></li>
           </ul>
         </div>
       </li>
     </ul>
+    <div class="no-result" *ngIf="vehiclesList.length === 0">
+      <p>No results to display</p>
+    </div>
   </section>
 </div>
 <app-footer></app-footer> 

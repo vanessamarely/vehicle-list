@@ -1,5 +1,22 @@
+.search-form {
+  position: relative;
+  button {
+    &.btn-search {
+      border: 1px solid #ced4da;
+      border-left: 0;
+      position: absolute;
+      right: 0;
+      top: 32px;
+    }
+    &.btn-option {
+      position: absolute;
+      top: -15px;
+      right: 0;
+    }
+  }
+}
+
 .vehicle-list-section {
-  
   .vehicle-list-container {
     display: flex;
     flex-wrap: wrap;
@@ -12,6 +29,7 @@
         border-radius: 5px;
         box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
         box-sizing: border-box;
+        cursor: pointer;
         flex: 1 0 300px;
         margin: 10px;
 
@@ -33,13 +51,20 @@
             padding: 0;
             li {
               p {
+                color: #86939E;
                 font-size: 1.2em;
+                font-weight: 300;
                 line-height: 1em;
               }
             }
           }
         }
       }
+    }
+  }
+  .no-result {
+    p {
+      padding: 15px;
     }
   }
 }
