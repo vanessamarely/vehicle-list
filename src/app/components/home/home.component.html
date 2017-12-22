@@ -21,8 +21,8 @@
   </section>
   <!-- Compare info -->
   <section class="compare-detail" *ngIf="comparelist.length > 1">
-    <p>You have been select {{ compareModelCount }} Models. To compare them click on following button: 
-    <button type="button" class="btn btn-primary btn-compare-link" [routerLink]="['/compare']">Compare</button></p>
+    <p>You have been select {{ compareModelCount }} Models. To compare them click on following button 
+    <button type="button" class="btn btn-primary btn-compare-link" [routerLink]="['/compare']" (click)="setCompare()">Compare</button></p>
   </section>
   <!-- Vehicle list -->
   <section class="vehicle-list-section">

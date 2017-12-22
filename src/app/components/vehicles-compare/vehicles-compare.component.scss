@@ -1,0 +1,46 @@
+$white: #fff;
+
+.compare {
+  h2 {
+    &.title {
+      color: #43484D;
+      font-weight: 300;
+      font-size: 52px;
+      letter-spacing: -2px;
+      text-align: center;
+    }
+  }
+  .table-container {
+    padding: 10px;
+
+    table {
+      thead {
+        &.theader {
+          background-color: #3aa4d1;
+          th {
+            color: $white;
+            font-size: 1.4rem;
+            font-weight: 300;
+          }
+        }
+      }
+      tbody {
+        td {
+          .picture-container {
+            box-sizing: border-box;
+            height: 150px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            width: 150px;
+
+            img {
+              max-width: 100%;
+              height: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}

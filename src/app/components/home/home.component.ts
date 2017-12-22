@@ -66,4 +66,9 @@ export class HomeComponent implements OnInit {
     this.compareModelCount++;
   }
 
+  setCompare() {
+    this.vehicleList.setComparedVehicles( this.comparelist );
+  }
+
+
 }

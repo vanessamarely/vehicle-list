@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { VehicleListService } from '../../services/vehicle-list.service';
+
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-vehicles-compare',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VehiclesCompareComponent implements OnInit {
 
-  constructor() { }
+  vehicles = [];
+
+  constructor(private vehicleList: VehicleListService) { }
 
   ngOnInit() {
+    this.showComparedVehicles();
+  }
+
+  showComparedVehicles() {
+    this.vehicles = _.sortBy(this.vehicleList.getComparedVehicles(), 'model') ;
   }
 
 }
