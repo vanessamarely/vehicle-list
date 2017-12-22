@@ -12,8 +12,10 @@ import { HomeComponent } from './components/home/home.component';
 import { VehicleListService } from './services/vehicle-list.service';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { VehiclesCompareComponent } from './components/vehicles-compare/vehicles-compare.component';
+import { AboutComponent } from './components/about/about.component';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'about', component: AboutComponent},
   {path: 'vehicle/:id', component: VehicleComponent},
   {path: 'compare', component: VehiclesCompareComponent}
 ];
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     FooterComponent,
     HomeComponent,
     VehicleComponent,
-    VehiclesCompareComponent
+    VehiclesCompareComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

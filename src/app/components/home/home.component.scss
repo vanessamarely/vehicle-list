@@ -1,16 +1,27 @@
+$size-default: 1rem;
+
+.text-format {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.1rem;
+}
+
 .hover {
   cursor: pointer;
 }
 
 .search-form {
   position: relative;
+  label {
+    @extend .text-format;
+  }
   button {
     &.btn-search {
       border: 1px solid #ced4da;
       border-left: 0;
       position: absolute;
       right: 0;
-      top: 32px;
+      top: 27px;
     }
     &.btn-option {
       position: absolute;
@@ -51,7 +62,6 @@
               }
             }
           }
-          
   
           .vehicle-detail {
             list-style: none;
@@ -60,14 +70,17 @@
             li {
               p {
                 color: #86939E;
-                font-size: 1.2rem;
-                font-weight: 300;
-                line-height: 1rem;
+                @extend .text-format;
                 span {
                   &.link {
                     @extend .hover;
                     &:hover {
                       text-decoration: underline;
+                    }
+                    i {
+                      &.item-selected {
+                        color:#007bff;
+                      }
                     }
                   }
                 }
@@ -81,6 +94,40 @@
   .no-result {
     p {
       padding: 15px;
+      @extend .text-format;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+
+  .search-form {
+    label {
+      font-size: $size-default;
+    }
+    button {
+      &.btn-search {
+        top: 29px;
+      }
+    }
+  }
+
+  .vehicle-list-section {
+    .vehicle-list-container {
+      li {
+        &.vehicle {
+          .vehicle-container {
+            .vehicle-detail {
+              li {
+                p {
+                  font-size: $size-default;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

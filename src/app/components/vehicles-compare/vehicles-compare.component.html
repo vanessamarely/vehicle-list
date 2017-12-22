@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <section class="compare">
     <h2 class="text-center title">Vehicles Models</h2>
-    <div class="table-responsive table-container">
+    <div class="table-responsive table-container" *ngIf="vehicles.length > 0">
       <table id="compare-vehicles" class="table table table-striped table-hover">
         <thead class="theader">
           <tr>
@@ -42,6 +42,9 @@
           </tr>
           </tfoot>
       </table>
+    </div>
+    <div class="compare-message" *ngIf="vehicles.length === 0">
+      <p>Please go to <a href="#" [routerLink]="['']"><i class="fa fa-home"></i> home</a> to select at least two Vehicles to check their features</p>
     </div>
   </section>
 </div>

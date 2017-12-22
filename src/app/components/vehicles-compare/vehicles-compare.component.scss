@@ -5,7 +5,7 @@ $white: #fff;
     &.title {
       color: #43484D;
       font-weight: 300;
-      font-size: 52px;
+      font-size: 3rem;
       letter-spacing: -2px;
       text-align: center;
     }
@@ -26,6 +26,11 @@ $white: #fff;
       }
       tbody {
         td {
+          color: #86939E;
+          font-size: 1.2rem;
+          font-weight: 300;
+          line-height: 1rem;
+
           .picture-container {
             box-sizing: border-box;
             height: 150px;
@@ -40,6 +45,46 @@ $white: #fff;
             }
           }
         }
+      }
+    }
+  }
+  .compare-message {
+    p {
+      font-weight: 300;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+
+/* Responsive */
+@media (max-width: 576px) {
+  .compare {
+    h2 {
+      &.title {
+        font-size: 2rem;
+      }
+    }
+    .table-container {
+     
+      table {
+        thead {
+          &.theader {
+            th {
+              font-size: 1rem;
+            }
+          }
+        }
+        tbody {
+          td {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    .compare-message {
+      p {
+        font-size: 1rem;
       }
     }
   }
